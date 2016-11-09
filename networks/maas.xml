@@ -1,0 +1,16 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit maas
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>maas</name>
+  <uuid>7b964adb-8ae8-4374-b04f-bef2dcda461a</uuid>
+  <bridge name='virbr1' stp='on' delay='0'/>
+  <mac address='52:54:00:03:f8:38'/>
+  <domain name='maas'/>
+  <ip address='192.168.200.1' netmask='255.255.255.0'>
+  </ip>
+</network>
