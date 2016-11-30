@@ -1,13 +1,6 @@
-<!--
-WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
-OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
-  virsh edit kvm1
-or other application using the libvirt API.
--->
-
 <domain type='kvm'>
-  <name>kvm1</name>
-  <uuid>c07a053a-9afb-4a3f-a593-ab1ba6de913f</uuid>
+  <name>KVMNO</name>
+  <uuid>NEWUUID</uuid>
   <memory unit='KiB'>512000</memory>
   <currentMemory unit='KiB'>512000</currentMemory>
   <vcpu placement='static'>1</vcpu>
@@ -64,7 +57,7 @@ or other application using the libvirt API.
       <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
     </controller>
     <interface type='network'>
-      <mac address='52:54:00:62:fb:c6'/>
+      <mac address='NEWMAC'/>
       <source network='maas'/>
       <model type='rtl8139'/>
       <boot order='1'/>

@@ -8,8 +8,8 @@ or other application using the libvirt API.
 <network>
   <name>external</name>
   <uuid>bb12538b-abb6-46fd-9a1d-8efb46d1f444</uuid>
-  <forward dev='enp0s25' mode='route'>
-    <interface dev='enp0s25'/>
+  <forward dev='enxd8eb97bd54e1' mode='route'>
+    <interface dev='enxd8eb97bd54e1'/>
   </forward>
   <bridge name='virbr2' stp='on' delay='0'/>
   <mac address='52:54:00:fa:b5:3a'/>
