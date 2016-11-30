@@ -15,6 +15,9 @@ KVM config for a collapsed MAAS 2.0 Region/Rack Controller
 
 - kvm1
 
+##Deploy
+
+Run environment.sh to provision the network and vms for MAAS/Juju bootstrap
 
 
 ## Problems & Resolutions
