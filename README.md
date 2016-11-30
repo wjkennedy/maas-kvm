@@ -1,5 +1,7 @@
 KVM config for a collapsed MAAS 2.0 Region/Rack Controller
 
+![](maas-juju-net.png)
+
 ##Networks
 
 - maas
