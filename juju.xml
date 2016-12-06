@@ -7,13 +7,12 @@ or other application using the libvirt API.
 
 <domain type='kvm'>
   <name>juju</name>
-  <uuid>36e123fd-99ed-4b89-9293-13bf78e71975</uuid>
+  <uuid>2fa44d16-6c73-49f4-ac37-3bb33c56d3b8</uuid>
   <memory unit='KiB'>512000</memory>
   <currentMemory unit='KiB'>512000</currentMemory>
   <vcpu placement='static'>1</vcpu>
   <os>
-    <type arch='x86_64' machine='pc-i440fx-xenial'>hvm</type>
-    <boot dev='hd'/>
+    <type arch='x86_64' machine='pc-i440fx-wily'>hvm</type>
   </os>
   <features>
     <acpi/>
@@ -64,11 +63,23 @@ or other application using the libvirt API.
     <controller type='virtio-serial' index='0'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
     </controller>
+   <interface type='network'>
+     <source network='isolated'/>
+     <model type='virtio'/>
+   </interface>
     <interface type='network'>
       <mac address='00:00:00:00:00:ea'/>
-      <source network='external'/>
+      <source network='maas'/>
       <model type='rtl8139'/>
+      <boot order='1'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+    </interface>
+    <interface type='direct'>
+      <mac address='52:54:00:55:bd:a5'/>
+      <source dev='enp4s0' mode='vepa'/>
+      <model type='rtl8139'/>
+      <boot order='2'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x08' function='0x0'/>
     </interface>
     <serial type='pty'>
       <target port='0'/>

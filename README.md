@@ -4,18 +4,13 @@ KVM config for a collapsed MAAS 2.0 Region/Rack Controller
 
 ##Networks
 
-- maas
 
-- bridge
-
-- nat
-
-
-##Virtual Machine definitions
-
-- maas
-
-- kvm1
+ Name                 State      Autostart     Persistent
+----------------------------------------------------------
+ default              active     yes           yes
+ external             active     yes           yes
+ isolated             active     yes           yes
+ maas                 active     yes           yes
 
 ##Deploy
 
@@ -29,6 +24,18 @@ Run environment.sh to provision the network and vms for MAAS/Juju bootstrap
 - http://ipxe.org/err/040ee1
 
 - IP assignment with no TFTP payload
+
+Check network, bridging.
+
+### No TFTP payload:
+
+- Boots on MAAS network, receives IP address from MAAS, no TFTP payload delivered.
+
+Check that image download has completed successfully.
+
+Run tcpdump on MAAS network interface as defined with 'dpkg-reconfigure maas-region-controller', check for IP assignment.
+
+(How to discover TFTP behavior)
 
 
 ### Juju bootstrap

@@ -7,13 +7,13 @@ or other application using the libvirt API.
 
 <network>
   <name>external</name>
-  <uuid>bb12538b-abb6-46fd-9a1d-8efb46d1f444</uuid>
-  <forward dev='enxd8eb97bd54e1' mode='route'>
-    <interface dev='enxd8eb97bd54e1'/>
+  <uuid>4dc82bda-8041-42b0-a046-154747a2d37a</uuid>
+  <forward dev='enp4s0' mode='route'>
+    <interface dev='enp4s0'/>
   </forward>
   <bridge name='virbr2' stp='on' delay='0'/>
-  <mac address='52:54:00:fa:b5:3a'/>
+  <mac address='52:54:00:c2:a0:1e'/>
   <domain name='external'/>
-  <ip address='192.168.100.1' netmask='255.255.255.0'>
+  <ip address='192.168.200.1' netmask='255.255.255.0'>
   </ip>
 </network>

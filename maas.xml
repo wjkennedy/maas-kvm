@@ -7,19 +7,20 @@ or other application using the libvirt API.
 
 <domain type='kvm'>
   <name>maas</name>
-  <uuid>4a855794-118b-4f7f-9f63-50f3d70e7f50</uuid>
+  <uuid>6199eff0-4a1e-4c2b-819e-81ec829b7ee7</uuid>
   <memory unit='KiB'>1048576</memory>
   <currentMemory unit='KiB'>1048576</currentMemory>
   <vcpu placement='static'>1</vcpu>
   <os>
-    <type arch='x86_64' machine='pc-i440fx-xenial'>hvm</type>
+    <type arch='x86_64' machine='pc-i440fx-wily'>hvm</type>
+    <boot dev='hd'/>
   </os>
   <features>
     <acpi/>
     <apic/>
   </features>
   <cpu mode='custom' match='exact'>
-    <model fallback='allow'>core2duo</model>
+    <model fallback='allow'>Nehalem</model>
   </cpu>
   <clock offset='utc'>
     <timer name='rtc' tickpolicy='catchup'/>
@@ -35,19 +36,17 @@ or other application using the libvirt API.
   </pm>
   <devices>
     <emulator>/usr/bin/kvm-spice</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/var/lib/libvirt/images/generic.qcow2'/>
+      <target dev='hda' bus='ide'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+    </disk>
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
-      <source file='/home/wjkennedy/ubuntu-16.04.1-server-amd64.iso'/>
       <target dev='hdb' bus='ide'/>
       <readonly/>
       <address type='drive' controller='0' bus='0' target='0' unit='1'/>
-    </disk>
-    <disk type='file' device='disk'>
-      <driver name='qemu' type='qcow2'/>
-      <source file='/var/lib/libvirt/images/maas.img'/>
-      <target dev='hdc' bus='ide'/>
-      <boot order='1'/>
-      <address type='drive' controller='0' bus='1' target='0' unit='0'/>
     </disk>
     <controller type='usb' index='0' model='ich9-ehci1'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x7'/>
@@ -72,22 +71,28 @@ or other application using the libvirt API.
       <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
     </controller>
     <interface type='network'>
-      <mac address='52:54:00:74:54:c3'/>
-      <source network='maas'/>
+      <mac address='52:54:00:6d:f8:a8'/>
+      <source network='default'/>
       <model type='rtl8139'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
     </interface>
-    <interface type='direct'>
-      <mac address='52:54:00:6e:07:05'/>
-      <source dev='enp0s25' mode='bridge'/>
-      <model type='e1000'/>
+    <interface type='network'>
+      <mac address='52:54:00:2b:1e:ba'/>
+      <source network='maas'/>
+      <model type='virtio'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x08' function='0x0'/>
     </interface>
-    <interface type='network'>
-      <mac address='52:54:00:b9:e9:c1'/>
-      <source network='default'/>
-      <model type='rtl8139'/>
+    <interface type='direct'>
+      <mac address='52:54:00:5a:60:86'/>
+      <source dev='enp4s0' mode='vepa'/>
+      <model type='e1000'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x09' function='0x0'/>
+    </interface>
+    <interface type='network'>
+      <mac address='52:54:00:8c:b4:84'/>
+      <source network='isolated'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x0a' function='0x0'/>
     </interface>
     <serial type='pty'>
       <target port='0'/>
@@ -99,7 +104,6 @@ or other application using the libvirt API.
       <target type='virtio' name='com.redhat.spice.0'/>
       <address type='virtio-serial' controller='0' bus='0' port='1'/>
     </channel>
-    <input type='keyboard' bus='usb'/>
     <input type='mouse' bus='ps2'/>
     <input type='keyboard' bus='ps2'/>
     <graphics type='spice' autoport='yes'>
